@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int val;
+    struct node *next;
+};
+typedef struct node node;
+
+node *head = NULL;
+
+void insertAtBegin(int x)
+{
+    node *newnode;
+    newnode = (node*)malloc(sizeof(node));
+    
+    newnode->val =x;
+    newnode->next = NULL;
+    
+    if(head==NULL)
+    {
+        head = newnode;
+    }
+    else
+    {
+        newnode->next = head;
+        head=newnode;
+    }
+}
+
+void display()
+{
+    node *temp;
+    
+    temp =head;
+    
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->val);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int ch;
+    do{
+        int x;
+        scanf("%d",&x);
+        
+        insertAtBegin(x);
+        
+        printf("Do you want to insert more :(0/1) :");
+        scanf("%d",&ch);
+        
+        
+    }while(ch!=0);
+    
+    display();
+
+    return 0;
+}
