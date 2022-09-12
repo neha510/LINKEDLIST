@@ -1,0 +1,53 @@
+*******************************************************************************/
+#include <stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int val;
+    struct node *next;
+};
+typedef struct node node;
+
+node *head = NULL;
+
+void InsertAtLast(node* head,int x)
+{
+    node *newnode ;
+    newnode = (node *)malloc(sizeof(node));
+    
+    newnode->val = x;
+    newnode->next = NULL;
+    
+    if(head==NULL)
+    {
+        head = newnode;
+        printf("node inserted\n");
+    }
+    else
+    {
+        node *temp = head;
+        while(temp->next!=NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+        printf("node inserted\n");
+        
+    }
+}
+
+int main()
+{
+    int ch;
+    do{
+        int x;
+        scanf("%d",&x);
+        
+        InsertAtLast(head,x);
+        
+        printf("do you want to continue ?(0/1):");
+        scanf("%d",&ch);
+    }while(ch!=0);
+   
+}
